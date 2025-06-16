@@ -1,6 +1,6 @@
 
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Play, Users, Trophy, Brain } from 'lucide-react';
+import { ArrowRight, Play, Users, Trophy, Brain, Sparkles, Code, BookOpen } from 'lucide-react';
 
 interface HeroSectionProps {
   onGetStarted: (user: any) => void;
@@ -71,12 +71,63 @@ export const HeroSection = ({ onGetStarted }: HeroSectionProps) => {
         </div>
       </div>
       <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-        <div className="h-56 w-full bg-gradient-to-br from-blue-100 to-purple-100 sm:h-72 md:h-96 lg:w-full lg:h-full flex items-center justify-center">
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center w-32 h-32 bg-white rounded-full shadow-lg mb-4">
-              <Brain className="h-16 w-16 text-blue-600" />
+        <div className="h-56 w-full bg-gradient-to-br from-blue-100 via-purple-50 to-indigo-100 sm:h-72 md:h-96 lg:w-full lg:h-full flex items-center justify-center relative overflow-hidden">
+          {/* Animated background elements */}
+          <div className="absolute inset-0">
+            <div className="absolute top-10 left-10 w-20 h-20 bg-blue-200 rounded-full opacity-20 animate-pulse"></div>
+            <div className="absolute top-20 right-16 w-16 h-16 bg-purple-200 rounded-full opacity-30 animate-pulse delay-300"></div>
+            <div className="absolute bottom-20 left-20 w-12 h-12 bg-indigo-200 rounded-full opacity-25 animate-pulse delay-700"></div>
+            <div className="absolute bottom-16 right-10 w-24 h-24 bg-pink-200 rounded-full opacity-20 animate-pulse delay-500"></div>
+          </div>
+          
+          {/* Main content */}
+          <div className="relative z-10 text-center max-w-sm mx-auto px-6">
+            {/* AI Brain with floating elements */}
+            <div className="relative mb-6">
+              <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl shadow-xl mb-4 relative">
+                <Brain className="h-12 w-12 text-white" />
+                {/* Floating sparkles */}
+                <Sparkles className="absolute -top-2 -right-2 h-6 w-6 text-yellow-400 animate-bounce" />
+                <Code className="absolute -bottom-2 -left-2 h-5 w-5 text-green-400 animate-pulse" />
+              </div>
+              
+              {/* Floating feature icons */}
+              <div className="absolute -top-4 -left-8">
+                <div className="bg-white rounded-lg p-2 shadow-lg animate-bounce delay-100">
+                  <BookOpen className="h-4 w-4 text-blue-600" />
+                </div>
+              </div>
+              <div className="absolute -top-2 -right-8">
+                <div className="bg-white rounded-lg p-2 shadow-lg animate-bounce delay-300">
+                  <Trophy className="h-4 w-4 text-purple-600" />
+                </div>
+              </div>
+              <div className="absolute -bottom-4 left-8">
+                <div className="bg-white rounded-lg p-2 shadow-lg animate-bounce delay-500">
+                  <Users className="h-4 w-4 text-green-600" />
+                </div>
+              </div>
             </div>
-            <p className="text-lg font-semibold text-gray-700">AI-Powered Learning</p>
+            
+            <h3 className="text-2xl font-bold text-gray-800 mb-2">
+              AI-Powered Learning
+            </h3>
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              Experience personalized education with intelligent tutoring, 
+              adaptive problem-solving, and real-time feedback.
+            </p>
+            
+            {/* Interactive elements */}
+            <div className="grid grid-cols-2 gap-3 text-sm">
+              <div className="bg-white/70 backdrop-blur-sm rounded-lg p-3 border border-white/20">
+                <div className="font-semibold text-blue-600">Smart Hints</div>
+                <div className="text-gray-600">AI-guided solutions</div>
+              </div>
+              <div className="bg-white/70 backdrop-blur-sm rounded-lg p-3 border border-white/20">
+                <div className="font-semibold text-purple-600">Adaptive</div>
+                <div className="text-gray-600">Personalized pace</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
