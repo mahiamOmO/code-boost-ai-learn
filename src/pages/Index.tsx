@@ -1,12 +1,35 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useState } from 'react';
+import { Navigation } from '@/components/Navigation';
+import { HeroSection } from '@/components/HeroSection';
+import { FeatureSection } from '@/components/FeatureSection';
+import { Dashboard } from '@/components/Dashboard';
+import { Footer } from '@/components/Footer';
 
 const Index = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  const handleLogin = (user: any) => {
+    setIsLoggedIn(true);
+    setCurrentUser(user);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setCurrentUser(null);
+  };
+
+  if (isLoggedIn) {
+    return <Dashboard user={currentUser} onLogout={handleLogout} />;
+  }
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+      <Navigation onLogin={handleLogin} />
+      <HeroSection onGetStarted={handleLogin} />
+      <FeatureSection />
+      <Footer />
     </div>
   );
 };
